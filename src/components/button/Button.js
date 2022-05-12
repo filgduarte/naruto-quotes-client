@@ -1,21 +1,18 @@
 import styled from 'styled-components';
 
 export const Button = styled.button`
-  background: #f27137;
-  color: #fff;
-  border: none;
-  border-radius: 0;
-  font-size: 1.5em;
-  padding: 10px 20px;
-  font-family: 'New Tegomin', serif;
-  cursor: pointer;
-  box-shadow: #332c36 3px 3px;
+    background-color: #DC872C;
+    color: #FFF;
+    border: none;
+    border-radius: 3px;
+    font-size: 1.5rem;
+    padding: 10px 20px;
+    font-family: 'New Tegomin', serif;
+    cursor: pointer;
+    box-shadow: 3px 3px #333;
+    transition: background-color .3s ease;
 
-  &:hover {
-    background-color: #a40000;
-  }
-
-  &:focus {
-    outline: none;
-  }
+    &:hover {
+        background-color: #a40000;
+    }
 `;
