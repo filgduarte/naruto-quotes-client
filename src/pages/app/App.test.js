@@ -18,7 +18,7 @@ afterAll(() => server.close());
 test('renders the app with a quote, a button and an image', () => {
   render(<App />);
 
-  const quoteEl = screen.getByText(/speaker/);
+  const quoteEl = screen.getByText('loading quote...');
   const buttonEl = screen.getByRole('button');
   const imageEl = screen.getByRole('img');
 
@@ -33,6 +33,14 @@ test('calls api on button click and updates its text', async () => {
   const buttonEl = screen.getByRole('button');
   
   fireEvent.click(buttonEl);
+
+  const quoteEl = await screen.findByText(response.quote);
+
+  expect(quoteEl).toBeInTheDocument();
+});
+
+test('calls api on startup and renders it response', async () => {
+  render(<App />);
 
   const quoteEl = await screen.findByText(response.quote);
 
