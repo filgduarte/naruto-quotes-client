@@ -11,14 +11,17 @@ export function App() {
   const isMounted = useRef(true);
 
   const [quoteState, setQuoteState] = useState({ quote: 'loading quote...', character: 'loading character...' });
+  const [isActive, setActive] = useState(false);
 
   const onUpdate = async () => {
+    setActive(false)
     const quote = await getQuote();
     
     // Se o componente está montado...
     if (isMounted.current) {
       audio.play();
       setQuoteState(quote);
+      setActive(true);
     }
   };
 
@@ -33,7 +36,7 @@ export function App() {
   /* {...quoteState} é igual a quote={quoteState.quote} character={quoteState.character} */
   return (
     <Content>
-      <Quotes {...quoteState} onUpdate={onUpdate} />
+      <Quotes {...quoteState} onUpdate={onUpdate} myStyle={ isActive ? null : { opacity: 0 } } />
       <NarutoImg src={narutoImg} alt="Naruto piscando um olho e sorrindo estende a mão esquerda em sua direção segurando uma kunai. Ele está vestindo um casaco laranja e preto." />
     </Content>
   )
